@@ -1,0 +1,52 @@
+---
+export async function getStaticPaths() {
+  const data = await fetch("http://localhost:5000/products").then((response) =>
+    response.json()
+  );
+
+  return data.map((product) => {
+    return {
+      params: { details: product._id },
+      props: { product },
+    };
+  });
+}
+
+const { details } = Astro.params;
+const { product } = Astro.props;
+const { img, name, price, _id } = product;
+console.log(product);
+---
+
+<div class="grid grid-cols-3 gap-12 mx-6 p-4 my-6 bg-gray-100 items-center">
+  <div>
+    <img class="p-4" src={img} alt="Design" />
+  </div>
+  <div class="py-12 col-span-2">
+    <h1 class="text-4xl font-bold mb-4">{name}</h1>
+    <p class="mb-4">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Non molestiae
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Non molestiae
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Non molestiae
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Non molestiae
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Non molestiae
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Non molestiae
+    </p>
+    <h4 class="text-2xl font-bold text-justify">
+      Price:<span class="text-orange-600"> ${price}</span>
+    </h4>
+
+    <div class="flex pt-24 gap-12">
+      <button
+        class="bg-cyan-500 font-bold hover:bg-cyan-600 text-white px-24 py-3"
+      >
+        Buy Now
+      </button>
+      <button
+        class="bg-orange-500 font-bold hover:bg-orange-600 text-white px-24 py-3"
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>

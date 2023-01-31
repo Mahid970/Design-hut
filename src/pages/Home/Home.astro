@@ -1,0 +1,22 @@
+---
+import banner from "../../images/banner/banner.png";
+// import Clients from "./Clients.astro";
+// import ServicePlan from "./ServicePlan.astro";
+import ServicePlane from "./ServicePlan.astro";
+
+// import Designs from "./Designs.jsx";
+import Footer from "./Footer.astro";
+import Products from "./Products";
+
+const name = "mahid";
+const users = ["Ami", "tmi", "keke", name];
+---
+
+<img class="w-full" src={banner} alt="Banner" />
+<!-- <Clients /> -->
+
+<ServicePlane />
+<Products client:load />
+
+<!-- <Designs /> -->
+<Footer />
